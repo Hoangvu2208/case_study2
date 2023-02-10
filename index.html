@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubble Shot</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+      }
+      .score {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        font-size: 2rem;
+        z-index: 100;
+        color: white;
+      }
+      .gameOver {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 10px;
+        transition: all 0.5s ease-in-out;
+        visibility: hidden;
+        width: 20vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .active {
+        visibility: visible;
+      }
+      button {
+        font-size: 1rem;
+        padding: .5rem;
+        background-color: hsl(192, 79%, 56%);
+        color: white;
+        border-radius: 5px;
+
+      }
+      button:hover{
+        transform: scale(1.1);
+      }
+      .header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+      }
+    </style>
+    <canvas></canvas>
+
+    <div class="score">
+      <span>Score: <span id="score">0</span></span>
+    </div>
+    <div class="gameOver">
+      <h2>Game Over</h2>
+      <h3>Score : <span id="finalScore">0</span></h3>
+      <button type="button" id="reloadGame">Try again</button>
+    </div>
+    <div class="header">Case Study (PF2211R1) Vu Dinh Hoang</div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+      integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
