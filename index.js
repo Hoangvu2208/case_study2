@@ -1,13 +1,11 @@
-console.log(gsap);
+// console.log(gsap);
 const canvas = document.querySelector("canvas");
 const score = document.querySelector("#score");
-const finalScore = document.querySelector('#finalScore');
-const gameOver = document.querySelector('.gameOver');
-document.querySelector('#reloadGame').onclick = () =>{
+const finalScore = document.querySelector("#finalScore");
+const gameOver = document.querySelector(".gameOver");
+document.querySelector("#reloadGame").onclick = () => {
   location.reload();
-}
-
-
+};
 
 // console.log(canvas);
 
@@ -16,7 +14,8 @@ canvas.height = window.innerHeight;
 
 const c = canvas.getContext("2d");
 
-// thuoc tiing nguoi choi
+// thuoc tinh nguoi choi
+
 class Player {
   constructor(x, y, radius, color) {
     this.x = x;
@@ -32,6 +31,7 @@ class Player {
     c.fill();
   }
 }
+
 // thuoc tinh cua vien dan
 class Projectile {
   constructor(x, y, radius, color, velocity) {
@@ -55,36 +55,34 @@ class Projectile {
   }
 }
 // thuoc tinh cua ke dich
-class Enemy {
-  constructor(x, y, radius, color, velocity) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.color = color;
-    this.velocity = velocity;
-  }
-  draw() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = this.color;
-    c.fill();
-  }
+class Enemy extends Projectile {
+  super() {};
+  // constructor(x, y, radius, color, velocity) {
+  //   this.x = x;
+  //   this.y = y;
+  //   this.radius = radius;
+  //   this.color = color;
+  //   this.velocity = velocity;
+  // }
 
-  update() {
-    this.draw();
-    this.x += this.velocity.x;
-    this.y += this.velocity.y;
-  }
+  // draw() {
+  //   c.beginPath();
+  //   c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+  //   c.fillStyle = this.color;
+  //   c.fill();
+  // }
+
+  // update() {
+  //   this.draw();
+  //   this.x += this.velocity.x;
+  //   this.y += this.velocity.y;
+  // }
 }
 // hieu ung no tung particular
 const friction = 0.99;
-class Particle {
+class Particle extends Projectile {
   constructor(x, y, radius, color, velocity) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.color = color;
-    this.velocity = velocity;
+    super(x, y, radius, color, velocity);
     this.alpha = 1;
   }
   draw() {
@@ -129,7 +127,7 @@ const particles = [];
 function spawnEnemies() {
   setInterval(() => {
     const radius = Math.random() * 30 + 10;
-    console.log(radius);
+    //console.log(radius);
     // console.log('ke dich moi da xuat hien');
 
     let x;
@@ -192,7 +190,7 @@ function animate() {
     if (distance - enemy.radius - player.radius < 1) {
       //console.log("end game");
       cancelAnimationFrame(animationId);
-      gameOver.classList.toggle('active');
+      gameOver.classList.toggle("active");
     }
 
     projecttiles.forEach((projectile, projectileIndex) => {
@@ -208,7 +206,6 @@ function animate() {
         scoreValue += 100;
         score.innerHTML = scoreValue;
         finalScore.innerHTML = scoreValue;
-        
 
         for (let i = 0; i < enemy.radius * 2; i++) {
           particles.push(
