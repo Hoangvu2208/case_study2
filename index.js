@@ -16,94 +16,21 @@ const c = canvas.getContext("2d");
 
 // thuoc tinh nguoi choi
 
-class Player {
-  constructor(x, y, radius, color) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.color = color;
-  }
+// class Player {
+//   constructor(x, y, radius, color) {
+//     this.x = x;
+//     this.y = y;
+//     this.radius = radius;
+//     this.color = color;
+//   }
 
-  draw() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = this.color;
-    c.fill();
-  }
-}
-
-// thuoc tinh cua vien dan
-class Projectile {
-  constructor(x, y, radius, color, velocity) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
-    this.color = color;
-    this.velocity = velocity;
-  }
-  draw() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = this.color;
-    c.fill();
-  }
-  // update de khi requestFrame se thay doi vi tri cua vien dan
-  update() {
-    this.draw();
-    this.x += this.velocity.x;
-    this.y += this.velocity.y;
-  }
-}
-// thuoc tinh cua ke dich
-class Enemy extends Projectile {
-  super() {};
-  // constructor(x, y, radius, color, velocity) {
-  //   this.x = x;
-  //   this.y = y;
-  //   this.radius = radius;
-  //   this.color = color;
-  //   this.velocity = velocity;
-  // }
-
-  // draw() {
-  //   c.beginPath();
-  //   c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-  //   c.fillStyle = this.color;
-  //   c.fill();
-  // }
-
-  // update() {
-  //   this.draw();
-  //   this.x += this.velocity.x;
-  //   this.y += this.velocity.y;
-  // }
-}
-// hieu ung no tung particular
-const friction = 0.99;
-class Particle extends Projectile {
-  constructor(x, y, radius, color, velocity) {
-    super(x, y, radius, color, velocity);
-    this.alpha = 1;
-  }
-  draw() {
-    c.save();
-    c.globalAlpha = this.alpha;
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = this.color;
-    c.fill();
-    c.restore();
-  }
-
-  update() {
-    this.draw();
-    this.velocity.x *= friction;
-    this.velocity.y *= friction;
-    this.x += this.velocity.x;
-    this.y += this.velocity.y;
-    this.alpha -= 0.01;
-  }
-}
+//   draw() {
+//     c.beginPath();
+//     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+//     c.fillStyle = this.color;
+//     c.fill();
+//   }
+// }
 
 const x = canvas.width / 2;
 const y = canvas.height / 2;
@@ -246,7 +173,9 @@ addEventListener("click", (event) => {
   // console.log(event);
   // console.log(projecttiles);
 
-  // dung atan2() dung de tim ra goc giua noi click chuot voi be mat cua man hinh
+  // dung atan2() dung de tim ra goc giua noi click chuot
+  // => x: cos(angle), y => sin(angle)
+  //=> ve lai projectile o vi tri moi sau do xoa cai cu di
   const angle = Math.atan2(
     event.clientY - canvas.height / 2,
     event.clientX - canvas.width / 2
