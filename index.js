@@ -14,38 +14,10 @@ canvas.height = window.innerHeight;
 
 const c = canvas.getContext("2d");
 
-// thuoc tinh nguoi choi
-
-// class Player {
-//   constructor(x, y, radius, color) {
-//     this.x = x;
-//     this.y = y;
-//     this.radius = radius;
-//     this.color = color;
-//   }
-
-//   draw() {
-//     c.beginPath();
-//     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-//     c.fillStyle = this.color;
-//     c.fill();
-//   }
-// }
-
 const x = canvas.width / 2;
 const y = canvas.height / 2;
 const player = new Player(x, y, 20, "white");
 
-// const projectile = new Projectile(
-//   canvas.width /2,
-//   canvas.height /2,
-//   5,
-//   'red',
-//   {
-//     x:1,
-//     y:1
-//   }
-// );
 
 const projecttiles = [];
 const enemies = [];
@@ -67,7 +39,6 @@ function spawnEnemies() {
       x = Math.random() * canvas.width;
       y = Math.random() < 0.5 ? 0 - radius : canvas.height - radius;
     }
-
     const color = `hsl(${Math.random() * 360},50%,50%)`;
     // lay tam man hinh tru cho vi tri hien tai cua ke dich
     const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
@@ -76,7 +47,6 @@ function spawnEnemies() {
       x: Math.cos(angle),
       y: Math.sin(angle),
     };
-
     enemies.push(new Enemy(x, y, radius, color, velocity));
   }, 1000);
 }

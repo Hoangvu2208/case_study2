@@ -1,3 +1,4 @@
+// thuoc tinh nguoi choi
 class Player {
   constructor(x, y, radius, color) {
     this.x = x;
