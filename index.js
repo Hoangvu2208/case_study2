@@ -165,5 +165,5 @@ addEventListener("click", (event) => {
 animate();
 spawnEnemies();
 
-// https://www.youtube.com/watch?v=eI9idPTT0c4&t=5816s
-// 
+// https://www.youtube.com/watch?v=eI9idPTT0c4&t=5816s  => 参考リンク
+// git@github.com:Hoangvu2208/case_study2.git => ソースコードリンク
