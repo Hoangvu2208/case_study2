@@ -26,7 +26,6 @@ const particles = [];
 function spawnEnemies() {
   setInterval(() => {
     const radius = Math.random() * 30 + 10;
-    //console.log(radius);
     // console.log('ke dich moi da xuat hien');
 
     let x;
@@ -51,9 +50,9 @@ function spawnEnemies() {
   }, 1000);
 }
 
+
 let animationId;
 let scoreValue = 0;
-
 function animate() {
   animationId = requestAnimationFrame(animate);
   c.fillStyle = "rgba(0,0,0,0.15)";
@@ -150,11 +149,12 @@ addEventListener("click", (event) => {
     event.clientY - canvas.height / 2,
     event.clientX - canvas.width / 2
   );
-  // console.log(angle) projectile;
+  //  console.log(angle);
   const velocity = {
     x: Math.cos(angle) * 9,
     y: Math.sin(angle) * 9,
   };
+  
 
   // sau khi lay duoc vi tri thi se dua tao ra 1 vien dan moi
   projecttiles.push(
@@ -164,3 +164,6 @@ addEventListener("click", (event) => {
 
 animate();
 spawnEnemies();
+
+// https://www.youtube.com/watch?v=eI9idPTT0c4&t=5816s
+// 
